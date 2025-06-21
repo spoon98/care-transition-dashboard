@@ -1,26 +1,117 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --font-inter: 'Inter', sans-serif;
+
+    /* Cascala Theme with Shadcn CSS Variables */
+    /* Backgrounds */
+    --background: 0 0% 100%; /* Cascala White #FFFFFF */
+    --foreground: 0 0% 6.7%; /* Cascala Black #111827 (Gray 900 for text) */
+
+    /* Cards */
+    --card: 0 0% 100%; /* Cascala White */
+    --card-foreground: 0 0% 6.7%; /* Cascala Black (Gray 900) */
+
+    /* Popovers */
+    --popover: 0 0% 100%; /* Cascala White */
+    --popover-foreground: 0 0% 6.7%; /* Cascala Black (Gray 900) */
+
+    /* Primary (Interactive Elements - using Cascala Purple) */
+    --primary: 259 92% 66%; /* Cascala Purple #8B5CF6 */
+    --primary-foreground: 0 0% 98%; /* A light color for text on purple, e.g., white-ish */
+
+    /* Secondary (Less prominent interactive elements - using a Cascala Gray) */
+    --secondary: 0 0% 96.1%; /* Cascala Gray 100 #F3F4F6 */
+    --secondary-foreground: 0 0% 9%; /* Cascala Gray 900 #111827 */
+
+    /* Muted (Subtle text, backgrounds - using Cascala Grays) */
+    --muted: 0 0% 96.1%; /* Cascala Gray 100 #F3F4F6 */
+    --muted-foreground: 0 0% 45.1%; /* Cascala Gray 500 #6B7280 */
+
+    /* Accent (Can be same as primary or another Cascala accent) */
+    --accent: 259 92% 66%; /* Cascala Purple #8B5CF6 */
+    --accent-foreground: 0 0% 98%; /* Light text for on accent */
+
+    /* Destructive (Errors, warnings - using Cascala Red) */
+    --destructive: 0 84% 60%; /* Cascala Red #EF4444 */
+    --destructive-foreground: 0 0% 98%; /* Light text for on destructive */
+
+    /* Borders and Inputs */
+    --border: 0 0% 89.8%; /* Cascala Gray 200 #E5E7EB */
+    --input: 0 0% 89.8%; /* Cascala Gray 200 #E5E7EB */
+    --ring: 259 92% 66%; /* Cascala Purple #8B5CF6 for focus rings */
+
+    /* Radius */
+    --radius: 0.5rem; /* Default 8px, can adjust based on Cascala theme if needed */
+  }
+
+  .dark {
+    /* Define dark theme based on Cascala if needed, or use Shadcn defaults and adjust */
+    --background: 0 0% 6.7%; /* Dark Gray e.g. Cascala Gray 900 */
+    --foreground: 0 0% 98%; /* Cascala White / Light Gray */
+
+    --card: 0 0% 6.7%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 6.7%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 259 92% 70%; /* Lighter Purple for dark mode */
+    --primary-foreground: 0 0% 9%; /* Dark text on lighter purple */
+
+    --secondary: 0 0% 14.9%; /* Darker Gray */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 259 92% 70%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 72% 51%; /* Slightly adjusted Red for dark */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 259 92% 70%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold;
+  }
+}
+
+/* Cascala brand colors as custom utilities */
+@theme {
+  --color-cascala-black: #000000;
+  --color-cascala-white: #ffffff;
+  --color-cascala-red: #ef4444;
+  --color-cascala-orange: #f59e0b;
+  --color-cascala-green: #10b981;
+  --color-cascala-purple: #8b5cf6;
+  --color-cascala-gray-50: #f9fafb;
+  --color-cascala-gray-100: #f3f4f6;
+  --color-cascala-gray-200: #e5e7eb;
+  --color-cascala-gray-400: #9ca3af;
+  --color-cascala-gray-500: #6b7280;
+  --color-cascala-gray-700: #374151;
+  --color-cascala-gray-900: #111827;
 }
