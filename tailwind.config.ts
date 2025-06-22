@@ -73,6 +73,18 @@ const config = {
           },
         },
       },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '120': '30rem',
+      },
+      boxShadow: {
+        subtle: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        card: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        hover:
+          '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        focus: '0 0 0 3px rgba(139, 92, 246, 0.1)',
+      },
       fontFamily: {
         sans: [
           'var(--font-inter)',
@@ -95,6 +107,11 @@ const config = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+        xl: '1rem',
+        '2xl': '1.25rem',
+      },
+      fontSize: {
+        xxs: ['0.625rem', { lineHeight: '0.875rem' }], // 10px
       },
       keyframes: {
         'accordion-down': {

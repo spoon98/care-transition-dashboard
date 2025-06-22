@@ -9,27 +9,55 @@ interface ActionCardDisplayProps {
 }
 
 export default function ActionCardDisplay({ card }: ActionCardDisplayProps) {
+    // Determine badge color based on confidence level
+    const getBadgeVariant = (confidence: number): "default" | "secondary" | "destructive" => {
+        if (confidence >= 0.8) return "default";
+        if (confidence >= 0.5) return "secondary";
+        return "destructive";
+    };
+
     return (
-        <Card className="mb-3 bg-white shadow-md text-left">
-            <CardHeader className="pb-2 pt-4">
-                <div className="flex items-start justify-between">
-                    <CardTitle className="text-md font-semibold text-cascala-black">{card.title}</CardTitle>
+        <Card className="mb-4 bg-white hover:shadow-hover transition-all duration-200 border-2 border-cascala-gray-200">
+            <CardHeader className="p-6 pb-4 border-b border-cascala-gray-100">
+                <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                        <CardTitle className="text-base font-semibold text-cascala-gray-900 mb-2">
+                            {card.title}
+                        </CardTitle>
+                        <CardDescription className="text-sm text-cascala-gray-600 font-medium">
+                            Patient: {card.patient}
+                        </CardDescription>
+                    </div>
                     {card.confidence !== undefined && (
-                        <Badge variant="outline" className="ml-2 text-xs">
+                        <Badge
+                            variant={getBadgeVariant(card.confidence)}
+                            className="shrink-0 font-medium px-3 py-1"
+                        >
                             {Math.round(card.confidence * 100)}% Conf.
                         </Badge>
                     )}
                 </div>
-                <CardDescription className="text-xs text-cascala-gray-500">Patient: {card.patient}</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-2 pb-4 text-sm">
-                <div>
-                    <h4 className="text-xs font-medium text-cascala-gray-700 mb-0.5">Insight:</h4>
-                    <p className="text-cascala-gray-900">{card.insight}</p>
+            <CardContent className="p-6 space-y-6">
+                <div className="space-y-2">
+                    <h4 className="text-xs font-semibold text-cascala-gray-600 tracking-wider uppercase">
+                        Insight
+                    </h4>
+                    <div className="p-4 bg-cascala-gray-50 rounded-lg border border-cascala-gray-100">
+                        <p className="text-sm text-cascala-gray-900 leading-relaxed">
+                            {card.insight}
+                        </p>
+                    </div>
                 </div>
-                <div>
-                    <h4 className="text-xs font-medium text-cascala-gray-700 mb-0.5">Reasoning:</h4>
-                    <p className="text-cascala-gray-900">{card.reasoning}</p>
+                <div className="space-y-2">
+                    <h4 className="text-xs font-semibold text-cascala-gray-600 tracking-wider uppercase">
+                        Reasoning
+                    </h4>
+                    <div className="p-4 bg-cascala-gray-50 rounded-lg border border-cascala-gray-100">
+                        <p className="text-sm text-cascala-gray-900 leading-relaxed">
+                            {card.reasoning}
+                        </p>
+                    </div>
                 </div>
             </CardContent>
         </Card>

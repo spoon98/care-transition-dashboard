@@ -7,11 +7,11 @@
 
     /* Cascala Theme with Shadcn CSS Variables */
     /* Backgrounds */
-    --background: 0 0% 100%; /* Cascala White #FFFFFF */
+    --background: 0 0% 98%; /* Slightly off-white background #FAFAFA */
     --foreground: 0 0% 6.7%; /* Cascala Black #111827 (Gray 900 for text) */
 
     /* Cards */
-    --card: 0 0% 100%; /* Cascala White */
+    --card: 0 0% 100%; /* Pure white for cards */
     --card-foreground: 0 0% 6.7%; /* Cascala Black (Gray 900) */
 
     /* Popovers */
@@ -20,7 +20,7 @@
 
     /* Primary (Interactive Elements - using Cascala Purple) */
     --primary: 259 92% 66%; /* Cascala Purple #8B5CF6 */
-    --primary-foreground: 0 0% 98%; /* A light color for text on purple, e.g., white-ish */
+    --primary-foreground: 0 0% 100%; /* Pure white for text on purple */
 
     /* Secondary (Less prominent interactive elements - using a Cascala Gray) */
     --secondary: 0 0% 96.1%; /* Cascala Gray 100 #F3F4F6 */
@@ -32,19 +32,28 @@
 
     /* Accent (Can be same as primary or another Cascala accent) */
     --accent: 259 92% 66%; /* Cascala Purple #8B5CF6 */
-    --accent-foreground: 0 0% 98%; /* Light text for on accent */
+    --accent-foreground: 0 0% 100%; /* Pure white for on accent */
 
     /* Destructive (Errors, warnings - using Cascala Red) */
     --destructive: 0 84% 60%; /* Cascala Red #EF4444 */
-    --destructive-foreground: 0 0% 98%; /* Light text for on destructive */
+    --destructive-foreground: 0 0% 100%; /* Pure white for on destructive */
 
     /* Borders and Inputs */
-    --border: 0 0% 89.8%; /* Cascala Gray 200 #E5E7EB */
-    --input: 0 0% 89.8%; /* Cascala Gray 200 #E5E7EB */
+    --border: 0 0% 91%; /* Lighter border #E8E8E8 */
+    --input: 0 0% 91%; /* Lighter input border */
     --ring: 259 92% 66%; /* Cascala Purple #8B5CF6 for focus rings */
 
     /* Radius */
-    --radius: 0.5rem; /* Default 8px, can adjust based on Cascala theme if needed */
+    --radius: 0.75rem; /* 12px for more modern rounded corners */
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 
   .dark {
@@ -80,22 +89,49 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-cascala-gray-50 text-cascala-gray-900;
     font-family: var(--font-inter), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
+  h1 {
+    @apply text-3xl font-bold tracking-tight;
+  }
+  h2 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+  h3 {
+    @apply text-xl font-semibold;
+  }
+  h4 {
+    @apply text-lg font-medium;
+  }
+  h5 {
+    @apply text-base font-medium;
+  }
   h6 {
-    @apply font-semibold;
+    @apply text-sm font-medium;
+  }
+}
+
+/* Custom utility classes for consistent spacing */
+@layer utilities {
+  .spacing-xs {
+    @apply p-2;
+  }
+  .spacing-sm {
+    @apply p-3;
+  }
+  .spacing-md {
+    @apply p-4;
+  }
+  .spacing-lg {
+    @apply p-6;
+  }
+  .spacing-xl {
+    @apply p-8;
   }
 }
 

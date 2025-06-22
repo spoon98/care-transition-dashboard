@@ -132,14 +132,16 @@ export default function ChatInterface() {
     };
 
     return (
-        <Card className="w-full h-[70vh] flex flex-col shadow-xl">
-            <CardHeader>
-                <CardTitle className="text-cascala-black">Care Transition Assistant</CardTitle>
+        <Card className="w-full h-[75vh] flex flex-col shadow-lg border-2 border-cascala-gray-200">
+            <CardHeader className="p-6 border-b-2 border-cascala-gray-200 bg-white">
+                <CardTitle className="text-xl text-cascala-gray-900">
+                    Care Transition Assistant
+                </CardTitle>
             </CardHeader>
-            <CardContent className="flex-grow overflow-hidden p-0">
+            <CardContent className="flex-grow overflow-hidden p-0 bg-cascala-gray-50">
                 <MessageList messages={messages} />
             </CardContent>
-            <CardFooter className="border-t p-4">
+            <CardFooter className="border-t-2 border-cascala-gray-200 p-6 bg-white">
                 <ChatInput
                     value={inputValue}
                     onChange={setInputValue}

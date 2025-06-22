@@ -23,13 +23,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-cascala-gray-50 font-sans antialiased",
           fontInter.variable
         )}
       >
-        <div className="min-h-screen flex flex-col">
-          <header className="bg-card border-b border-border sticky top-0 z-50">
-            <nav className="container h-[80px] flex items-center justify-between py-2">
+        <div className="min-h-screen flex flex-col bg-cascala-gray-50">
+          <header className="bg-white border-b border-cascala-gray-200 sticky top-0 z-50 shadow-subtle">
+            <nav className="container h-20 flex items-center justify-between">
               <div className="flex items-center">
                 {/* Cascala Logo */}
                 <Image
@@ -38,18 +38,21 @@ export default function RootLayout({
                   width={170}
                   height={39}
                   priority
+                  className="hover:opacity-90 transition-opacity duration-200"
                 />
               </div>
               {/* Navigation Links & Actions can be added here */}
             </nav>
           </header>
-          <main className="flex-grow container py-8">
+          <main className="flex-grow container py-8 md:py-12">
             {children}
           </main>
-          <footer className="bg-card border-t border-border py-6 text-center">
-            <p className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} Cascala. All rights reserved.
-            </p>
+          <footer className="bg-white border-t border-cascala-gray-200 py-8">
+            <div className="container text-center">
+              <p className="text-sm text-cascala-gray-500">
+                &copy; {new Date().getFullYear()} Cascala. All rights reserved.
+              </p>
+            </div>
           </footer>
         </div>
       </body>
