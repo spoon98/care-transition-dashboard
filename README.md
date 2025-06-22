@@ -162,3 +162,10 @@ The `/api/chat/route.ts` employs a specific prompt engineering strategy to elici
 -   **JSON Mode**: The OpenAI API call is configured with `response_format: { type: "json_object" }` (for compatible models like `gpt-4-turbo-preview` or newer `gpt-3.5-turbo` versions) to enforce JSON output.
 -   **Validation**: The API route includes parsing and basic validation of the LLM's JSON response to ensure it conforms to the expected structure. Fallback error cards are generated if validation fails.
 
+## Challenges and Trade-offs
+
+-   **LLM JSON Reliability**: While JSON mode significantly improves reliability, LLMs can still occasionally produce slightly malformed JSON or deviate from complex schemas. The backend includes validation and error handling for such cases, attempting to provide a graceful fallback.
+-   **Prompt Engineering Iteration**: Crafting effective prompts for consistent structured output is an iterative process. The current prompts are a good starting point but might need further refinement based on more diverse queries and data.
+-   **Token Limits**: Providing extensive discharge summaries in the prompt can consume a large number of tokens, potentially hitting model limits or increasing costs. For production, strategies like data summarization, embedding-based retrieval of relevant context, or using models with larger context windows would be necessary.
+-   **Error Handling**: The application implements client-side and server-side error handling. Server-side logs provide details for debugging, while the client displays user-friendly messages.
+-   **localStorage Limitations**: Chat history persistence via localStorage is convenient for single-user, single-browser sessions but has size limitations (typically 5-10MB) and is not suitable for sensitive data in a production healthcare environment without encryption and proper access controls. It also doesn't sync across devices.
